@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}التوجيه — UniPark Hail{% endblock %}
+{% block content %}
+<section class="panel-card narrow">
+  <h1>تعذر التوجيه</h1>
+  <p>{{ result.message }}</p>
+  <p><a href="{{ url_for('map_page') }}">العودة إلى الخريطة</a></p>
+</section>
+{% endblock %}

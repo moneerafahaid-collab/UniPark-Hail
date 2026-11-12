@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}لوحة الأمن — UniPark Hail{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">P4 مراقبة الإشغال</p>
+    <h1>لوحة أمن الحرم</h1>
+  </div>
+</section>
+<p class="note">الإجمالي والشاغر والمشغول لكل منطقة. هذه الصفحة لأمن الحرم والإدارة فقط.</p>
+<div id="zone-cards" class="summary-grid"></div>
+<section class="panel-card">
+  <h2>محاكي التسجيل</h2>
+  <p id="feed-state">جارٍ قراءة المحاكي...</p>
+  <p id="last-updated"></p>
+  <div class="row-actions">
+    <button type="button" id="feed-start">تشغيل المحاكي</button>
+    <button type="button" id="feed-stop" class="secondary">إيقاف المحاكي</button>
+    <button type="button" id="feed-tick" class="secondary">تسجيل حركة واحدة</button>
+    <button type="button" id="feed-bad" class="danger">تجربة رمز غير معروف</button>
+  </div>
+</section>
+<div class="admin-tables">
+  <section class="panel-card">
+    <h2>سجل الحركة</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الموقف</th><th>الحدث</th><th>المصدر</th><th>الوقت</th></tr></thead>
+        <tbody id="events-body"></tbody>
+      </table>
+    </div>
+  </section>
+  <section class="panel-card">
+    <h2>طلبات التوجيه</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>المستخدم</th><th>الموقف</th><th>الإحداثيات</th><th>الوقت</th></tr></thead>
+        <tbody id="nav-body"></tbody>
+      </table>
+    </div>
+  </section>
+  <section class="panel-card">
+    <h2>سجل الأخطاء</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الرسالة</th><th>الوقت</th></tr></thead>
+        <tbody id="error-body"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

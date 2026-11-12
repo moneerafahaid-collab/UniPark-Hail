@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}حجوزاتي — UniPark Hail{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">حجز موقف</p>
+    <h1>حجوزاتي</h1>
+  </div>
+</section>
+{% set active = reservations | selectattr('status', 'equalto', 'active') | list %}
+{% if active %}
+  {% set item = active[0] %}
+  <article class="panel-card booking-live">
+    <p class="eyebrow">حجز ساري</p>
+    <h2><bdi>{{ item.spot_code }}</bdi> — {{ item.zone_name }}</h2>
+    <p>ينتهي {{ item.expires_at | riyadh }} بتوقيت حائل.</p>
+    <div class="row-actions">
+      <form method="post" action="{{ url_for('navigate_form') }}" target="_blank">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <input type="hidden" name="spot_code" value="{{ item.spot_code }}">
+        <button type="submit">التوجيه في خرائط Google</button>
+      </form>
+      <form method="post" action="{{ url_for('arrive_form', reservation_id=item.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button type="submit" class="secondary">تأكيد الوصول</button>
+      </form>
+      <form method="post" action="{{ url_for('cancel_form', reservation_id=item.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button type="submit" class="danger">إلغاء الحجز</button>
+      </form>
+    </div>
+  </article>
+{% else %}
+  <article class="panel-card">
+    <h2>حجز موقف متاح</h2>
+    {% if free_spots %}
+    <form method="post" action="{{ url_for('reserve_form') }}" class="reserve-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label>الموقف
+        <select name="spot_code" required>
+          {% for spot in free_spots %}
+          <option value="{{ spot.code }}">{{ spot.code }} — {{ spot.zone_name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>المدة
+        <select name="minutes">
+          <option value="30">30 دقيقة</option>
+          <option value="60" selected>60 دقيقة</option>
+          <option value="90">90 دقيقة</option>
+        </select>
+      </label>
+      <button type="submit">احجز الموقف</button>
+    </form>
+    {% else %}
+    <p>لا يوجد موقف متاح حالياً. راقب الخريطة حتى يحرر المحاكي موقفاً.</p>
+    {% endif %}
+  </article>
+{% endif %}
+{% if reservations %}
+<div class="table-wrap panel-card">
+  <h2>السجل</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>الموقف</th>
+        <th>المنطقة</th>
+        <th>الحالة</th>
+        <th>بداية الحجز</th>
+        <th>الانتهاء</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in reservations %}
+      <tr>
+        <td><bdi>{{ item.spot_code }}</bdi></td>
+        <td>{{ item.zone_name }}</td>
+        <td>{{ status_ar.get(item.status, item.status) }}</td>
+        <td>{{ item.created_at | riyadh }}</td>
+        <td>{{ item.expires_at | riyadh }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}خريطة المواقف — UniPark Hail{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">مخطط الحرم</p>
+    <h1>مواقف جامعة حائل</h1>
+  </div>
+  <ul class="legend">
+    <li><i class="swatch available"></i>متاح</li>
+    <li><i class="swatch occupied"></i>مشغول</li>
+    <li><i class="swatch reserved"></i>محجوز</li>
+  </ul>
+</section>
+<p class="note">حركة الوصول والمغادرة تأتي من محاكي منفصل عن الخريطة والتوجيه، ويمكن لاحقاً استبداله بحساسات حقيقية.</p>
+<div id="my-res" class="my-res" hidden></div>
+<section class="workspace">
+  <div class="board">
+    <div id="feed-bar" class="feed-bar">جارٍ قراءة حالة المواقف...</div>
+    <section class="panel-card" id="loc-card">
+      <h2>محدد الموقع</h2>
+      <p id="loc-text">اسمح للمتصفح بقراءة موقعك، أو جرّب نقطة داخل الحرم لمعرفة أقرب موقف.</p>
+      <div class="row-actions">
+        <button type="button" id="loc-real">حدد موقعي</button>
+        <button type="button" id="loc-demo" class="secondary">موقع تجريبي داخل الحرم</button>
+      </div>
+    </section>
+    <div id="nearest"></div>
+    <div id="lots"></div>
+  </div>
+  <aside class="side">
+    <div id="map"></div>
+    <section class="panel-card" id="panel">
+      <h2>الموقف المختار</h2>
+      <p>اختر موقفاً من المخطط أو من الخريطة.</p>
+    </section>
+  </aside>
+</section>
+<noscript>فعّل JavaScript لعرض تغيّر المواقف لحظة بلحظة.</noscript>
+<script id="campus-data" type="application/json">{{ campus | tojson }}</script>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js', v=5) }}"></script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}تسجيل — UniPark Hail{% endblock %}
+{% block content %}
+<section class="auth-shell">
+  <section class="auth-card">
+    <p class="eyebrow">حساب جديد</p>
+    <h1>تسجيل مستخدم الحرم</h1>
+    <p class="lede">لا نطلب رقم الهوية ولا بيانات بطاقة. التسجيل للطالب وعضو هيئة التدريس والموظف.</p>
+    <form method="post" action="{{ url_for('register') }}" class="stack">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label>الاسم الكامل
+        <input type="text" name="full_name" required minlength="3" maxlength="80" autocomplete="name">
+      </label>
+      <label>البريد
+        <input type="email" name="email" required autocomplete="email" placeholder="name@uoh.edu.sa">
+      </label>
+      <label>الجوال <span class="optional">اختياري</span>
+        <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx">
+      </label>
+      <fieldset>
+        <legend>الصفة</legend>
+        <div class="roles">
+          <label><input type="radio" name="role" value="student" checked> طالب</label>
+          <label><input type="radio" name="role" value="faculty"> عضو هيئة تدريس</label>
+          <label><input type="radio" name="role" value="staff"> موظف</label>
+        </div>
+      </fieldset>
+      <label>كلمة المرور
+        <input type="password" name="password" required minlength="6" autocomplete="new-password">
+      </label>
+      <label>تأكيد كلمة المرور
+        <input type="password" name="confirm" required minlength="6" autocomplete="new-password">
+      </label>
+      <button type="submit">إنشاء الحساب</button>
+    </form>
+    <p class="switch">عندك حساب؟ <a href="{{ url_for('login') }}">تسجيل الدخول</a></p>
+  </section>
+  <section class="auth-hero">
+    <p class="eyebrow">ماذا بعد التسجيل؟</p>
+    <ol class="steps">
+      <li>تفتح خريطة مواقف الحرم وترى الشاغر والمشغول.</li>
+      <li>تحدد موقعك لمعرفة أقرب موقف متاح.</li>
+      <li>تحجز الموقف ثم تفتح مساره في خرائط Google.</li>
+    </ol>
+  </section>
+</section>
+{% endblock %}

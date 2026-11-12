@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}دخول — UniPark Hail{% endblock %}
+{% block content %}
+<section class="auth-shell">
+  <section class="auth-card">
+    <p class="eyebrow">تسجيل الدخول</p>
+    <h1>ادخل إلى مواقف الحرم</h1>
+    <p class="lede">شاهد المواقف الشاغرة، حدّد موقعك، واحجز موقفاً قبل الوصول.</p>
+    <form method="post" action="{{ url_for('login') }}" class="stack">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label>البريد الجامعي
+        <input type="email" name="email" autocomplete="username" required placeholder="name@uoh.edu.sa">
+      </label>
+      <label>كلمة المرور
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit">دخول</button>
+    </form>
+    <p class="switch">ما عندك حساب؟ <a href="{{ url_for('register') }}">إنشاء حساب</a></p>
+    <div class="demo-box">
+      <strong>حسابات التجربة</strong>
+      <p>كلمة المرور لكل الحسابات: <bdi>hail1234</bdi></p>
+      <ul>
+        <li><bdi>student@uoh.edu.sa</bdi> — طالب</li>
+        <li><bdi>faculty@uoh.edu.sa</bdi> — عضو هيئة تدريس</li>
+        <li><bdi>security@uoh.edu.sa</bdi> — أمن الحرم</li>
+      </ul>
+    </div>
+  </section>
+  <section class="auth-hero">
+    <img src="{{ url_for('static', filename='img/uoh-logo.webp') }}" alt="جامعة حائل">
+    <p class="eyebrow">جامعة حائل</p>
+    <h2>اعرف الموقف الشاغر قبل الوصول إلى الحرم</h2>
+    <p>أربع مناطق داخل الحرم، كل موقف برمز مثل A15، مع محاكي يسجّل الوصول والمغادرة بدون أجهزة استشعار.</p>
+    <div class="mini-lot">
+      <span class="spot available">A15</span>
+      <span class="spot available">A03</span>
+      <span class="spot occupied">A01</span>
+      <span class="spot reserved">B07</span>
+      <span class="spot available">C10</span>
+      <span class="spot occupied">D02</span>
+    </div>
+  </section>
+</section>
+{% endblock %}
