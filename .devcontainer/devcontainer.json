@@ -1,0 +1,13 @@
+{
+  "name": "UniPark Hail",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "forwardPorts": [5050],
+  "portsAttributes": {
+    "5050": {
+      "label": "UniPark Hail",
+      "onAutoForward": "silent",
+      "visibility": "public"
+    }
+  },
+  "postStartCommand": "bash .devcontainer/start.sh"
+}
