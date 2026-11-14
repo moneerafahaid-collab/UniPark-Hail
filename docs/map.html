@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>خريطة المواقف — UniPark Hail</title>
+  <link rel="icon" href="img/uoh-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="govbar">
+    <div class="wrap govbar-inner">
+      <span>جامعة حائل</span>
+      <strong>منصة مواقف الحرم الجامعي</strong>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">
+        <img src="img/uoh-logo.webp" alt="جامعة حائل">
+        <span>
+          <strong>مواقف الحرم</strong>
+          <small>UniPark Hail</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="map.html">الخريطة</a>
+        <a href="index.html">دخول</a>
+      </nav>
+      <div class="who">
+        <span id="who-name">زائر العرض</span>
+        <a class="ghost" href="index.html">خروج</a>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="page-head">
+      <div>
+        <p class="eyebrow">مخطط الحرم</p>
+        <h1>مواقف جامعة حائل</h1>
+      </div>
+      <ul class="legend">
+        <li><i class="swatch available"></i>متاح</li>
+        <li><i class="swatch occupied"></i>مشغول</li>
+        <li><i class="swatch reserved"></i>محجوز</li>
+      </ul>
+    </section>
+    <p class="note">واجهة استعراض لحالة المواقف داخل الحرم. الأخضر متاح، والأحمر مشغول، والذهبي محجوز.</p>
+    <div id="my-res" class="my-res" hidden></div>
+    <section class="workspace">
+      <div class="board">
+        <div id="feed-bar" class="feed-bar"><i class="dot"></i><span>العرض جاهز لمواقف جامعة حائل.</span></div>
+        <section class="panel-card" id="loc-card">
+          <h2>محدد الموقع</h2>
+          <p id="loc-text">جرّب نقطة داخل الحرم لمعرفة أقرب موقف متاح.</p>
+          <div class="row-actions">
+            <button type="button" id="loc-demo">موقع تجريبي داخل الحرم</button>
+          </div>
+        </section>
+        <div id="nearest"></div>
+        <div id="lots"></div>
+      </div>
+      <aside class="side">
+        <div id="map"></div>
+        <section class="panel-card" id="panel">
+          <h2>الموقف المختار</h2>
+          <p>اختر موقفاً من المخطط أو من الخريطة.</p>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <img src="img/uoh-logo.webp" alt="جامعة حائل">
+      <p>جامعة حائل — UniPark Hail</p>
+      <p>واجهة استعراض لمواقف الحرم</p>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

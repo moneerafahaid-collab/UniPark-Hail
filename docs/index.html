@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دخول — UniPark Hail</title>
+  <link rel="icon" href="img/uoh-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="govbar">
+    <div class="wrap govbar-inner">
+      <span>جامعة حائل</span>
+      <strong>منصة مواقف الحرم الجامعي</strong>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">
+        <img src="img/uoh-logo.webp" alt="جامعة حائل">
+        <span>
+          <strong>مواقف الحرم</strong>
+          <small>UniPark Hail</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">دخول</a>
+        <a href="map.html">الخريطة</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="auth-shell">
+      <section class="auth-card">
+        <p class="eyebrow">تسجيل الدخول</p>
+        <h1>ادخل إلى مواقف الحرم</h1>
+        <p class="lede">شاهد المواقف الشاغرة، حدّد موقعك، واحجز موقفاً قبل الوصول.</p>
+        <form id="login-form" class="stack">
+          <label>البريد الجامعي
+            <input type="email" name="email" required placeholder="name@uoh.edu.sa" value="student@uoh.edu.sa">
+          </label>
+          <label>كلمة المرور
+            <input type="password" name="password" required value="hail1234">
+          </label>
+          <p id="login-error" class="note" hidden>البريد أو كلمة المرور غير مطابقة لحسابات التجربة.</p>
+          <button type="submit">دخول</button>
+        </form>
+        <div class="demo-box">
+          <strong>حسابات التجربة</strong>
+          <p>كلمة المرور لكل الحسابات: <bdi>hail1234</bdi></p>
+          <ul>
+            <li><bdi>student@uoh.edu.sa</bdi> — طالب</li>
+            <li><bdi>faculty@uoh.edu.sa</bdi> — عضو هيئة تدريس</li>
+            <li><bdi>security@uoh.edu.sa</bdi> — أمن الحرم</li>
+          </ul>
+        </div>
+      </section>
+      <section class="auth-hero">
+        <img src="img/uoh-logo.webp" alt="جامعة حائل">
+        <p class="eyebrow">جامعة حائل</p>
+        <h2>اعرف الموقف الشاغر قبل الوصول إلى الحرم</h2>
+        <p>أربع مناطق داخل الحرم، كل موقف برمز مثل A15، مع عرض لحالة المتاح والمشغول والمحجوز.</p>
+        <div class="mini-lot">
+          <span class="spot available">A15</span>
+          <span class="spot available">A03</span>
+          <span class="spot occupied">A01</span>
+          <span class="spot reserved">B07</span>
+          <span class="spot available">C10</span>
+          <span class="spot occupied">D02</span>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <img src="img/uoh-logo.webp" alt="جامعة حائل">
+      <p>جامعة حائل — UniPark Hail</p>
+      <p>واجهة استعراض لمواقف الحرم</p>
+    </div>
+  </footer>
+  <script src="js/login.js"></script>
+</body>
+</html>
